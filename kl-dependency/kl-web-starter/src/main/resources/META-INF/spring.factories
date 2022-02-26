@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.kl.web.starter.config.WebMvcAutoConfiguration,\
+com.kl.web.starter.config.MonitorInitAutoConfiguration

@@ -15,6 +15,7 @@
         <module>kl-mq-starter</module>
         <module>kl-db-starter</module>
         <module>kl-dtx-starter</module>
+        <module>kl-web-starter</module>
     </modules>
 
     <properties>
