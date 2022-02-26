@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ewp.starter.databases.snowflake.data.mapper.TSnowflakeWorkerMapper">
+    <!-- 创建雪花工作者语句 -->
+    <insert id="create" useGeneratedKeys="true" keyProperty="create.id">
+        insert into t_snowflake_worker_auto
+        ( module_name
+        , host_address
+        , created_time
+        ) values
+        (
+        #{create.moduleName}
+        , #{create.hostAddress}
+        <choose>
+            <when test="create.createdTime != null">
+                , #{create.createdTime}
+            </when>
+            <otherwise>
+                , current_timestamp
+            </otherwise>
+        </choose>
+        )
+    </insert>
+
+    <!-- 获取我的工作者标识语句 -->
+    <select id="update">
+        update t_snowflake_worker_auto set module_name = #{update.moduleName},host_address = #{update.hostAddress},
+                                           modified_time = current_timestamp where id = #{update.id}
+    </select>
+
+    <!-- 获取我的工作者标识语句 -->
+    <select id="updateModifiedTime">
+        update t_snowflake_worker_auto
+        set modified_time = current_timestamp where id = #{create.id}
+    </select>
+
+    <!-- 获取我的工作者标识语句 -->
+    <select id="getMaxWorkerId" resultType="java.lang.Long">
+        select id
+        from t_snowflake_worker_auto order by id desc limit 1
+    </select>
+
+    <!-- 获取最早工作者标识语句 -->
+    <select id="getOlderWorkerId" resultType="com.ewp.starter.databases.snowflake.data.entity.TSnowflakeWorkerAuto">
+        select *
+        from t_snowflake_worker_auto order by modified_time asc limit 1
+    </select>
+
+    <!-- 获取最早的一条数据 -->
+    <select id="getOlderData" resultType="com.ewp.starter.databases.snowflake.data.entity.TSnowflakeWorkerAuto">
+        SELECT * FROM t_snowflake_worker_auto where modified_time &lt; #{modifiedTime} order by modified_time asc limit
+        1 for update
+    </select>
+</mapper>
