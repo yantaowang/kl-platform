@@ -54,6 +54,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <freemarker.version>2.3.30</freemarker.version>
+        <velocity-engine.version>2.2</velocity-engine.version>
     </properties>
 
     <modules>
@@ -115,6 +116,16 @@
                 <groupId>com.kl</groupId>
                 <artifactId>kl-dtx-starter</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kl</groupId>
+                <artifactId>kl-example-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kl</groupId>
+                <artifactId>kl-example-web</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
             <!--lombok-->
             <dependency>
@@ -328,6 +339,11 @@
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>${freemarker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

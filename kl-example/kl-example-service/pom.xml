@@ -12,6 +12,28 @@
     <artifactId>kl-example-service</artifactId>
 
     <dependencies>
+        <!--databases-->
+        <dependency>
+            <groupId>com.kl</groupId>
+            <artifactId>kl-db-starter</artifactId>
+        </dependency>
+        <!--分布式事务支持(Distributed Transaction)-->
+        <dependency>
+            <groupId>com.kl</groupId>
+            <artifactId>kl-dtx-starter</artifactId>
+        </dependency>
+        <!--dingtalk-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>alibaba-dingtalk-service-sdk</artifactId>
+            <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!--spring-boot-starter-test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,14 +88,14 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.ewp.starter.databases.mybatisplus.MybatisPlusCodeGenerate</mainClass>
+                    <mainClass>com.kl.db.starter.mybatisplus.MybatisPlusCodeGenerate</mainClass>
                     <arguments>
-                        <argument>jdbc:mysql://bj-cdb-fn9kzgn6.sql.tencentcdb.com:60450/ewp_examples_service</argument>
-                        <argument>pt_public</argument>
-                        <argument>1qaz2wsx!@A</argument>
+                        <argument>jdbc:mysql://127.0.0.1:3358/kl_examples</argument>
+                        <argument>root</argument>
+                        <argument>ams2020</argument>
                         <!--   操作人  -->
-                        <argument>ewp</argument>
-                        <argument>com.ewp.examples.service</argument>
+                        <argument>kl</argument>
+                        <argument>com.kl.examples.service</argument>
                         <!--   表  可以区分模块生成  -->
                         <argument>/dtx/dtx_account</argument>
                         <argument>/dtx/dtx_order</argument>

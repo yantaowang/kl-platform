@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kl.example.service.data.dtx.mapper.StorageMapper">
+
+    <update id="reduceStorage">
+        update dtx_storage
+           set count = count - #{count}
+         where commodity_code = #{commodityCode}
+           and count > #{count}
+    </update>
+
+    <update id="lockStorage">
+        UPDATE dtx_storage
+           SET lock_count = lock_count + #{count},
+               count = count - #{count}
+         WHERE commodity_code = #{commodityCode}
+           AND count >= #{count}
+    </update>
+
+    <update id="reduceStorageFromLock">
+        UPDATE dtx_storage
+           SET lock_count = lock_count - #{count}
+         WHERE commodity_code = #{commodityCode}
+           AND lock_count >= #{count}
+    </update>
+
+    <update id="releaseStorage">
+        UPDATE dtx_storage
+           SET count = count + #{count},
+               lock_count = lock_count - #{count}
+         WHERE commodity_code = #{commodityCode}
+           AND lock_count >= #{count}
+    </update>
+</mapper>

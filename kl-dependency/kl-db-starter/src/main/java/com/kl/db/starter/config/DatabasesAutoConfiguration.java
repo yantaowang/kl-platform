@@ -42,7 +42,7 @@ public class DatabasesAutoConfiguration {
      * 初始化忽略合作方的表
      *
      */
-    @Value("#{'${ewp.partner.ignoreTables:}'.split(',')}")
+    @Value("#{'${kl.partner.ignoreTables:}'.split(',')}")
     public void ignoreTables(List<String> ignorePartnerTables) {
         System.setProperty("druid.mysql.usePingMethod", "false");
         ignorePartnerTables.remove("");

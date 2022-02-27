@@ -15,7 +15,6 @@
         <dependency>
             <groupId>com.kl</groupId>
             <artifactId>kl-example-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.kl</groupId>

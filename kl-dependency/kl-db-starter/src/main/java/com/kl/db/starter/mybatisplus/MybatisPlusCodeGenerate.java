@@ -67,7 +67,7 @@ public class MybatisPlusCodeGenerate {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl(jdbcUrl + "?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl(jdbcUrl + "?useUnicode=true&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8");
         // dsc.setSchemaName("public");
 //        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setDriverName("com.mysql.jdbc.Driver");
