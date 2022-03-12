@@ -38,4 +38,5 @@ public class OrderEntity implements Serializable {
      */
     private Integer status;
 
+    private Integer tenantId;
 }

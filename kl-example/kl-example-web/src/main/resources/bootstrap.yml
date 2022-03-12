@@ -87,7 +87,7 @@ kl:
   partner:
     # true 启用合作方插件，默认为true
     enable: true
-    ignoreTables: t_live_course,t_live_class,t_system_configure,t_order,t_refund_order,t_order_force,t_section_browse_record,dtx_account,dtx_order,dtx_storage
+    ignoreTables: t_live_course,t_live_class,t_system_configure,t_order,t_refund_order,t_order_force,t_section_browse_record,dtx_account,dtx_storage
 
 # 健康监控
 management:

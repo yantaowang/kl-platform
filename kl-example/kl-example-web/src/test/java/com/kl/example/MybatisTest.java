@@ -2,6 +2,8 @@ package com.kl.example;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.kl.core.thread.KlThreadLocal;
+import com.kl.db.starter.IdGeneratorUtil;
 import com.kl.example.service.data.dtx.entity.OrderEntity;
 import com.kl.example.service.data.dtx.mapper.OrderMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -28,15 +30,18 @@ public class MybatisTest {
         OrderEntity tOrderEntity = orderMapper.selectById(505460450654175235l);
     }
 
-    public static void main(String[] args) {
-        Integer pageNo = 3;
-        Integer pageSize = 2;
-        List<String> newList = Arrays.asList("1","2","ds","fds","fdd","1d").stream()
-                .skip(pageNo*pageSize)
-                .limit(pageSize).collect(Collectors.toList());
-        System.out.println(JSON.toJSONString(newList));
+    @Test
+    public void insert() {
+//        KlThreadLocal.setTenantId(10000);
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setId(IdGeneratorUtil.nextId());
+        orderEntity.setUserId("12");
+        orderEntity.setCommodityCode("d");
+        orderEntity.setCount(1);
+        orderEntity.setMoney(2);
+        orderEntity.setStatus(2);
+        orderMapper.insert(orderEntity);
     }
-
 //    public void pageTest() {
 //        Page<OrderEntity> page = new Page<OrderEntity>(1, 1);
 //        List<OrderEntity> result = orderMapper.selectTableBypage(page, testTableVo.getPhoneModel());

@@ -24,18 +24,18 @@ spring:
       datasource:
         first:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://bj-cdb-fn9kzgn6.sql.tencentcdb.com:60450/ewp_examples_service?useUnicode=true&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
-          username: pt_public
-          password: 1qaz2wsx!@A
+          url: jdbc:mysql://127.0.0.1:3358/kl_examples?useUnicode=true&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+          username: root
+          password: ams2020
           druid:
             initial-size: 10
             max-active: 100
             min-idle: 10
         second:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://bj-cdb-fn9kzgn6.sql.tencentcdb.com:60450/ewp_examples_0?useUnicode=true&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
-          username: pt_public
-          password: 1qaz2wsx!@A
+          url: jdbc:mysql://127.0.0.1:3358/kl_examples?useUnicode=true&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+          username: root
+          password: ams2020
 #          # 不启动seata代理的数据源
 #          seata: false
           druid:
