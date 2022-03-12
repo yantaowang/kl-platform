@@ -18,6 +18,7 @@
         <module>kl-web-starter</module>
         <module>kl-starter-kafka</module>
         <module>kl-starter-rocketmq</module>
+        <module>kl-starter-shardings</module>
     </modules>
 
     <properties>
