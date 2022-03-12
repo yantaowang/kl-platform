@@ -1,0 +1,105 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: kl-example-web
+  cloud:
+    nacos:
+      discovery:
+        metadata:
+          #心跳间隔默认5s。时间单位:毫秒。心跳间隔
+          preserved.heart.beat.interval: 3000
+          #心跳超时默认15s。时间单位:毫秒。 即服务端15秒收不到客户端心跳，会将该客户端注册的实例设为不健康：(本地测试该配置没有效果)
+          preserved.heart.beat.timeout: 9000
+          #Ip删除超时默认30s。时间单位:毫秒。即服务端30秒收不到客户端心跳，会将该客户端注册的实例删除：
+          preserved.ip.delete.timeout: 9000
+#
+#  # spring-kafka 相关配置需要手动注入
+#  kafka:
+#    template:
+#      default-topic: ewp-examples-service-group
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      acks: all
+#      properties:
+#        # 请求的最长等待时间
+#        max:
+#          block:
+#            ms: 1000
+#        # 启用幂等
+#        enable:
+#          idempotence: true
+#    consumer:
+#      enable-auto-commit: false
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      auto-offset-reset: earliest
+#      max-poll-records: 5
+#      properties:
+#        session:
+#          timeout: 15000
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.kl.examples.service.data.*
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 1
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 1
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    # Sequence序列接口实现类配置
+    #key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+    #逻辑删除配置
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
+    #自定义SQL注入器
+  #    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+task:
+  pool:
+    corePoolSize: 5
+    maxPoolSize: 10
+    keepAliveSeconds: 60
+    queueCapacity: 1024
+
+kl:
+  snowflake:
+    # true 启用雪花插件，默认为true
+    enable: true
+  partner:
+    # true 启用合作方插件，默认为true
+    enable: true
+    ignoreTables: t_live_course,t_live_class,t_system_configure,t_order,t_refund_order,t_order_force,t_section_browse_record,dtx_account,dtx_order,dtx_storage
+
+# 健康监控
+management:
+  #  server:
+  #    port: 18882
+  endpoints:
+    web:
+      exposure:
+        include: "info,health,prometheus"
+  endpoint:
+    nacos-discovery:
+      cache:
+        time-to-live: 1000ms
+    health:
+      show-details: always

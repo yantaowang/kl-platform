@@ -1,0 +1,28 @@
+# 开发环境
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  # 开发环境其他配置，用于开发环境区分在测试、预发、生产的公共配置，在 测试、预发、生产 要去掉
+  profiles:
+    include:
+  cloud:
+    nacos:
+      discovery:
+        # 是否将本地信息注册到注册中心，即：是否允许被远程调用
+        register-enabled: ${NACOS_REGISTER_ENABLED:true}
+        # 注册中心地址
+        server-addr: ${NACOS_DISCOVERY_URL:localhost:8848}
+        # 注册中心用户名
+        username: ${NACOS_DISCOVERY_USERNAME:nacos}
+        # 注册中心密码
+        password: ${NACOS_DISCOVERY_PASSWORD:nacos}
+        # 开发环境使用的namespace
+        namespace: ${NACOS_DISCOVERY_NAMESPACE:public}
+        # 开发环境GROUP配置
+        # ${COMPUTERNAME} 为WIN计算机名称环境变量，若是出现计算机名称相同的情况，请自行设置：NACOS_DISCOVERY_GROUP
+        # ${USER} 为MAC用户名称环境变量，若是出现用户名称相同的情况，请自行设置：NACOS_DISCOVERY_GROUP
+        group: kl_${NACOS_DISCOVERY_GROUP:${COMPUTERNAME:${USER:DEFAULT}}}
+      config:
+        # 开发环境关闭配置中心
+        enabled: false

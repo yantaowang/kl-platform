@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ewp.examples.service.data.sharding.mapper.TRefundOrderMapper">
+<mapper namespace="com.kl.example.service.data.sharding.mapper.TRefundOrderMapper">
 
-    <select id="selectOrderInfoByRefundId"
-            resultType="com.ewp.examples.service.data.sharding.entity.TRefundOrderEntity">
-        select od.*
-          from t_refund_order rd
-          LEFT JOIN t_order od ON rd.customer_id = od.customer_id
-                              AND rd.pay_order_id = od.pay_order_id
-         WHERE rd.id = #{id}
-    </select>
+<!--    <select id="selectOrderInfoByRefundId"-->
+<!--            resultType="com.kl.examples.service.data.sharding.entity.TRefundOrderEntity">-->
+<!--        select od.*-->
+<!--          from t_refund_order rd-->
+<!--          LEFT JOIN t_order od ON rd.customer_id = od.customer_id-->
+<!--                              AND rd.pay_order_id = od.pay_order_id-->
+<!--         WHERE rd.id = #{id}-->
+<!--    </select>-->
 </mapper>
 

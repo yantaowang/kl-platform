@@ -1,9 +1,6 @@
 package com.kl.example.web.controller;
 
-import io.seata.core.context.RootContext;
-import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +38,7 @@ public class DtxController {
      * 4. 此处配置和seata官方配置不一致，主要为了兼容动态数据源
      */
     @Transactional
-    @GlobalTransactional(timeoutMills = 300000, name = "exampleDtxAt", rollbackFor = Exception.class)
+//    @GlobalTransactional(timeoutMills = 300000, name = "exampleDtxAt", rollbackFor = Exception.class)
     @GetMapping(value = "/buyByAt")
     public String buyByAt() {
 //
@@ -75,7 +72,7 @@ public class DtxController {
      * 4、业务数据可见性控制：修改的中间状态的业务数据该如何向用户展示，需要业务在实现时考虑清楚；通常的设计原则是“宁可不展示、少展示，也不多展示、错展示”；
      * 5、业务数据并发访问控制：用户在实现TCC服务时，需要考虑业务数据的并发控制，尽量将逻辑锁粒度降到最低，以最大限度的提高分布式事务的并发性；
      */
-    @GlobalTransactional(timeoutMills = 300000, name = "exampleDtxTcc", rollbackFor = Exception.class)
+//    @GlobalTransactional(timeoutMills = 300000, name = "exampleDtxTcc", rollbackFor = Exception.class)
     @GetMapping(value = "/buyByTcc")
     public String buyByTcc() {
 //        log.info("xid: {}", RootContext.getXID());

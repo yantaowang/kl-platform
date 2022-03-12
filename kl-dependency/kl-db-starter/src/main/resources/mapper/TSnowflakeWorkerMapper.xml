@@ -41,13 +41,13 @@
     </select>
 
     <!-- 获取最早工作者标识语句 -->
-    <select id="getOlderWorkerId" resultType="com.ewp.starter.databases.snowflake.data.entity.TSnowflakeWorkerAuto">
+    <select id="getOlderWorkerId" resultType="com.kl.db.starter.snowflake.data.entity.TSnowflakeWorkerAuto">
         select *
         from t_snowflake_worker_auto order by modified_time asc limit 1
     </select>
 
     <!-- 获取最早的一条数据 -->
-    <select id="getOlderData" resultType="com.ewp.starter.databases.snowflake.data.entity.TSnowflakeWorkerAuto">
+    <select id="getOlderData" resultType="com.kl.db.starter.snowflake.data.entity.TSnowflakeWorkerAuto">
         SELECT * FROM t_snowflake_worker_auto where modified_time &lt; #{modifiedTime} order by modified_time asc limit
         1 for update
     </select>

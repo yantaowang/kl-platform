@@ -17,11 +17,11 @@
             <groupId>com.kl</groupId>
             <artifactId>kl-db-starter</artifactId>
         </dependency>
-        <!--分布式事务支持(Distributed Transaction)-->
-        <dependency>
-            <groupId>com.kl</groupId>
-            <artifactId>kl-dtx-starter</artifactId>
-        </dependency>
+<!--        &lt;!&ndash;分布式事务支持(Distributed Transaction)&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.kl</groupId>-->
+<!--            <artifactId>kl-dtx-starter</artifactId>-->
+<!--        </dependency>-->
         <!--dingtalk-->
         <dependency>
             <groupId>com.aliyun</groupId>
@@ -95,7 +95,7 @@
                         <argument>ams2020</argument>
                         <!--   操作人  -->
                         <argument>kl</argument>
-                        <argument>com.kl.examples.service</argument>
+                        <argument>com.kl.example.service</argument>
                         <!--   表  可以区分模块生成  -->
                         <argument>/dtx/dtx_account</argument>
                         <argument>/dtx/dtx_order</argument>

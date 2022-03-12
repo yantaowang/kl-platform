@@ -20,9 +20,33 @@
             <groupId>com.kl</groupId>
             <artifactId>kl-web-starter</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.kl</groupId>-->
+<!--            <artifactId>kl-dtx-starter</artifactId>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.kl</groupId>
-            <artifactId>kl-dtx-starter</artifactId>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -42,9 +66,49 @@
                 <version>2.3.2.RELEASE</version>
             </plugin>
             <plugin>
+                <!-- https://github.com/ktoso/maven-git-commit-id-plugin -->
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <version>4.0.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>
+                    <!--,构建过程中,是否打印详细信息;默认值:false;-->
+                    <verbose>true</verbose>
+                    <!-- ".git"文件路径;默认值:${project.basedir}/.git; -->
+                    <dotGitDirectory>${project.basedir}/../\.git</dotGitDirectory>
+                    <!--若项目打包类型为pom,是否取消构建;默认值:true;-->
+                    <skipPoms>false</skipPoms>
+                    <!--是否生成"git.properties"文件;默认值:false;-->
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <!--指定"git.properties"文件的存放路径(相对于${project.basedir}的一个路径);-->
+                    <generateGitPropertiesFilename>src/main/resources/git.properties
+                    </generateGitPropertiesFilename>
+                    <!--".git"文件夹未找到时,构建是否失败;若设置true,则构建失败;若设置false,则跳过执行该目标;默认值:true;-->
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                    <!--只显示输出指定部分-->
+                    <includeOnlyProperties>
+                        <includeOnlyProperty>git.commit.id$</includeOnlyProperty>
+                        <includeOnlyProperty>git.build</includeOnlyProperty>
+                        <includeOnlyProperty>git.branch</includeOnlyProperty>
+                        <includeOnlyProperty>git.build.time</includeOnlyProperty>
+                        <includeOnlyProperty>git.commit.time</includeOnlyProperty>
+                    </includeOnlyProperties>
+                    <!--git描述配置,可选;由JGit提供实现;-->
+                    <gitDescribe>
+                        <skip>false</skip>
+                        <always>false</always>
+                        <abbrev>7</abbrev>
+                        <dirty>-dirty</dirty>
+                        <forceLongFormat>false</forceLongFormat>
+                    </gitDescribe>
+                </configuration>
             </plugin>
         </plugins>
     </build>
