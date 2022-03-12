@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.kl.mq.starter.config.KlMqAutoConfiguration,\
+com.kl.mq.starter.config.KlJacksonAutoConfiguration

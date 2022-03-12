@@ -6,6 +6,7 @@ import com.kl.core.thread.KlThreadLocal;
 import com.kl.db.starter.IdGeneratorUtil;
 import com.kl.example.service.data.dtx.entity.OrderEntity;
 import com.kl.example.service.data.dtx.mapper.OrderMapper;
+import com.kl.redis.starter.service.RedisCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,9 @@ public class MybatisTest {
 
     @Resource
     private OrderMapper orderMapper;
+
+    @Resource
+    private RedisCommand redisCommand;
 
     @Test
     public void selectTest() {
@@ -48,4 +52,10 @@ public class MybatisTest {
 //
 //        PageBean pageBean = new PageBean<>(result, page.getTotal(), page.getCurrent(), page.getSize());
 //    }
+
+    @Test
+    public void redisTest() {
+        KlThreadLocal.setTenantId(10000);
+        redisCommand.set("wyt", "888ddd");
+    }
 }

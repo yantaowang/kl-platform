@@ -20,6 +20,10 @@
             <groupId>com.kl</groupId>
             <artifactId>kl-web-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kl</groupId>
+            <artifactId>kl-redis-starter</artifactId>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.kl</groupId>-->
 <!--            <artifactId>kl-dtx-starter</artifactId>-->

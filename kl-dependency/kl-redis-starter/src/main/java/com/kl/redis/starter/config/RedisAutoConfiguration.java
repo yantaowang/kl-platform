@@ -31,7 +31,7 @@ import org.springframework.data.redis.connection.lettuce.LettucePoolingClientCon
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-
+import com.kl.redis.starter.service.RedisCommand;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -85,17 +85,17 @@ public class RedisAutoConfiguration<K, V> {
         return buildRedisTemplate(lqlcfactory, redisTemplate);
     }
 
-//    /**
-//     * redis 工具bean
-//     *
-//     * @param redisTemplate
-//     * @param stringRedisTemplate
-//     * @return
-//     */
-//    @Bean
-//    public RedisCommand redisCacheService(RedisTemplate<String, Object> redisTemplate, StringRedisTemplate stringRedisTemplate) {
-//        return new RedisCommand(redisTemplate, stringRedisTemplate, false);
-//    }
+    /**
+     * redis 工具bean
+     *
+     * @param redisTemplate
+     * @param stringRedisTemplate
+     * @return
+     */
+    @Bean
+    public RedisCommand redisCacheService(RedisTemplate<String, Object> redisTemplate, StringRedisTemplate stringRedisTemplate) {
+        return new RedisCommand(redisTemplate, stringRedisTemplate, false);
+    }
 
     /**
      * redis 限流

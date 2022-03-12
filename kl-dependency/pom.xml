@@ -16,6 +16,8 @@
         <module>kl-db-starter</module>
         <module>kl-dtx-starter</module>
         <module>kl-web-starter</module>
+        <module>kl-starter-kafka</module>
+        <module>kl-starter-rocketmq</module>
     </modules>
 
     <properties>
