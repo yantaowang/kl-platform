@@ -1,7 +1,5 @@
 package com.kl.example;
 
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kl.core.thread.KlThreadLocal;
 import com.kl.db.starter.IdGeneratorUtil;
 import com.kl.example.service.data.dtx.entity.OrderEntity;
@@ -14,9 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = KlExamplesWebApplication.class)
