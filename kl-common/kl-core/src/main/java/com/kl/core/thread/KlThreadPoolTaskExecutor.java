@@ -49,7 +49,7 @@ public class KlThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
      * @return ThreadPoolTaskExecutor
      */
     public static KlThreadPoolTaskExecutor newInstance(int corePoolSize, int maxPoolSize, int keepAliveSeconds, int queueCapacity, String threadNamePrefix) {
-        log.info("[newEwpThreadPoolTaskExecutor] corePoolSize:{}, maxPoolSize:{} ,keepAliveSeconds:{}, queueCapacity:{}, threadNamePrefix:{}",
+        log.info("[newKlThreadPoolTaskExecutor] corePoolSize:{}, maxPoolSize:{} ,keepAliveSeconds:{}, queueCapacity:{}, threadNamePrefix:{}",
                 corePoolSize, maxPoolSize, keepAliveSeconds, queueCapacity, threadNamePrefix);
         KlThreadPoolTaskExecutor executor = new KlThreadPoolTaskExecutor();
         //核心线程池大小
