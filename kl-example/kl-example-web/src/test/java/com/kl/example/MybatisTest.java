@@ -26,6 +26,7 @@ public class MybatisTest {
 
     @Test
     public void selectTest() {
+        KlThreadLocal.setTenantId(10000);
         OrderEntity tOrderEntity = orderMapper.selectById(505460450654175235l);
     }
 

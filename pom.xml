@@ -125,7 +125,12 @@
             <dependency>
                 <groupId>com.kl</groupId>
                 <artifactId>kl-example-web</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kl</groupId>
+                <artifactId>kl-security-starter</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <!--lombok-->
             <dependency>
