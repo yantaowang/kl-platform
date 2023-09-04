@@ -1,0 +1,6 @@
+dubboExceptionFilter=com.kl.core.dubbo.filter.DubboExceptionFilter
+dubboRequestLogFilter=com.kl.core.dubbo.filter.DubboRequestLogFilter
+dubboTraceIdFilter=com.kl.core.dubbo.filter.DubboTraceIdFilter
+dubboPartnerCodeFilter=com.kl.core.dubbo.filter.DubboPartnerCodeFilter
+dubboMontiorConsumerFilter=com.kl.core.dubbo.filter.DubboMontiorConsumerFilter
+dubboGrayCodeFilter=com.kl.core.dubbo.filter.DubboGrayCodeFilter
