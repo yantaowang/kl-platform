@@ -1,6 +1,4 @@
-# kl-platform
-康乐工作室技术
-
+基于sass微服务框架封装
 基础组件封装，用于创业使用，基于流行技术
 1、sping cloud
 2、redis
