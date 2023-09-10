@@ -23,6 +23,7 @@
 
     <modules>
         <module>kl-common</module>
+        <module>kl-core</module>
         <module>kl-dependency</module>
         <module>kl-example</module>
         <module>kl-core-dependency</module>

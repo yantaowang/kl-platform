@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.kl.starter.monitor.config.MonitorAutoConfig,\
+ com.kl.starter.monitor.config.MonitorConfig

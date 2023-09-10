@@ -1,6 +1,6 @@
 package com.kl.monitor.starter.utils;
 
-import com.ewp.starter.monitor.config.MonitorConfig;
+import com.kl.monitor.starter.config.MonitorConfig;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.Timer;

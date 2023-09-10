@@ -1,6 +1,6 @@
 package com.kl.monitor.starter.config;
 
-import com.ewp.starter.monitor.utils.MonitorUtil;
+import com.kl.monitor.starter.utils.MonitorUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

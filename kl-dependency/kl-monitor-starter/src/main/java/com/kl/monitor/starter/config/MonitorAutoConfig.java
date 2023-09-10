@@ -1,8 +1,8 @@
 package com.kl.monitor.starter.config;
 
-import com.ewp.starter.monitor.monitor.MonitorMetrics;
-import com.ewp.starter.monitor.monitor.MonitorMetricsFetcher;
-import com.ewp.starter.monitor.props.MonitorMetricsProperties;
+import com.kl.monitor.starter.monitor.MonitorMetrics;
+import com.kl.monitor.starter.monitor.MonitorMetricsFetcher;
+import com.kl.monitor.starter.props.MonitorMetricsProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -21,13 +21,13 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(value = MonitorMetricsProperties.class)
-@ConditionalOnProperty(prefix = "ewp.monitor", value = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "kl.monitor", value = "enabled", havingValue = "true")
 public class MonitorAutoConfig {
 
 	@Bean
 	@ConditionalOnMissingBean(MonitorMetrics.class)
 	public MonitorMetrics monitorMetrics(MonitorMetricsProperties monitorMetricsProperties,
-			List<MonitorMetricsFetcher> monitorMetricsFetcherList) {
+										 List<MonitorMetricsFetcher> monitorMetricsFetcherList) {
 		log.info("MonitorMetrics load");
 		MonitorMetrics monitorMetrics = new MonitorMetrics();
 		monitorMetrics.setMonitorMetricsProperties(monitorMetricsProperties);

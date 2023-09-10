@@ -38,9 +38,9 @@ import java.util.stream.Stream;
  */
 public class MonitorEnableCondition implements Condition {
 
-    private static final String ENABLE_PROPERTY = "ewp.monitor.enabled";
+    private static final String ENABLE_PROPERTY = "kl.monitor.enabled";
     private static final String ENABLE_PROPERTY_ENABLED = "true";
-    private static final String INCLUDE_PROPERTY = "ewp.monitor.include";
+    private static final String INCLUDE_PROPERTY = "kl.monitor.include";
     private static final String INCLUDE_PROPERTY_ALL = "*";
 
     @Override

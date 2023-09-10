@@ -1,0 +1,18 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.kl.starter.monitor.config.MonitorAutoConfig",
+      "name": "ewp.monitor.enabled",
+      "description": "是否开启EWP监控",
+      "type": "java.lang.Boolean",
+      "default": false
+    },
+    {
+      "sourceType": "com.kl.starter.monitor.config.MonitorAutoConfig",
+      "name": "ewp.kl.include",
+      "description": "开启EWP监控的项目，通过\"*\"打开所有监控项目",
+      "type": "java.lang.String"
+    }
+  ]
+}
