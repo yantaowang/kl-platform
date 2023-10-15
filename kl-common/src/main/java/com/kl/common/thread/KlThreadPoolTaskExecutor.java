@@ -1,7 +1,7 @@
-package com.kl.core.thread;
+package com.kl.common.thread;
 
-import com.kl.core.thread.threadproxy.CallableProxy;
-import com.kl.core.thread.threadproxy.RunnableProxy;
+import com.kl.common.thread.threadproxy.CallableProxy;
+import com.kl.common.thread.threadproxy.RunnableProxy;
 import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.Tag;
 import lombok.extern.slf4j.Slf4j;

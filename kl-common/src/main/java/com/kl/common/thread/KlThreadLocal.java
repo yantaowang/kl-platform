@@ -64,7 +64,7 @@ public class KlThreadLocal {
 				return null;
 			}
 			if (RunMode.PROD.equals(mode)) {
-				log.error("[EwpThreadLocalGetPartnerCodeNotNull]没有合作方id");
+				log.error("[KlThreadLocalGetPartnerCodeNotNull]没有合作方id");
 				return null;
 			}
 			throw new KlException(ResponseCode.PARTNER_CODE_NOT_EXISTS.getCode(),

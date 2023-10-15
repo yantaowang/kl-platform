@@ -1,6 +1,11 @@
 package com.kl.core.dubbo.filter;
 
-import com.kl.core.util.TracIdUtil;
+import com.kl.common.exception.KlException;
+import com.kl.common.exception.WarnKlException;
+import com.kl.common.util.TracIdUtil;
+import com.kl.monitor.starter.utils.CommonMonitorEnum;
+import com.kl.monitor.starter.utils.InterfaceTypeEnum;
+import com.kl.monitor.starter.utils.MonitorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;
@@ -57,12 +62,12 @@ public class DubboExceptionFilter extends ListenableFilter {
                         Throwable exception = appResponse.getException();
                         MonitorUtil.reportCount(CommonMonitorEnum.APP_REQUEST_EXCEPTION, "exception", exception.getClass().getSimpleName(), "type", InterfaceTypeEnum.RPC.getType(), "resource", DubboUtil.getMethodResourceName(invoker, invocation, false));
 
-                        if (exception instanceof WarnEwpException) {
+                        if (exception instanceof WarnKlException) {
                             log.warn("[DUBBO_EXCEPTION_LOG] DubboFrom:[" + dubboFrom + "] Got unchecked and undeclared exception which called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + exception.getClass().getSimpleName() + ": " + exception.getMessage(), exception);
                         }else{
                             log.error("[DUBBO_EXCEPTION_LOG] DubboFrom:[" + dubboFrom + "] Got unchecked and undeclared exception which called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + exception.getClass().getSimpleName() + ": " + exception.getMessage(), exception);
                         }
-                        if (exception instanceof EwpException) {
+                        if (exception instanceof KlException) {
                             // 自定义异常直接抛出
                             return;
                         }
@@ -129,7 +134,7 @@ public class DubboExceptionFilter extends ListenableFilter {
                 }
                 MDC.put(TracIdUtil.LOGGER_ID_PARAM_NAME, traceId);
                 String dubboFrom = RpcContext.getContext().getRemoteApplicationName();
-                if (e instanceof WarnEwpException) {
+                if (e instanceof WarnKlException) {
                     log.warn("[DUBBO_EXCEPTION_LOG] DubboFrom:[" + dubboFrom + "] Got unchecked and undeclared exception which called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + e.getClass().getSimpleName() + ": " + e.getMessage(), e);
                 }else{
                     log.error("[DUBBO_EXCEPTION_LOG] DubboFrom:[" + dubboFrom + "] Got unchecked and undeclared exception which called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + e.getClass().getSimpleName() + ": " + e.getMessage(), e);

@@ -3,12 +3,11 @@ package com.kl.web.starter.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.kl.core.constants.CommonConstants;
-import com.kl.core.constants.RunMode;
+import com.kl.common.constants.CommonConstants;
+import com.kl.common.constants.RunMode;
 import com.kl.web.starter.aop.IgnorePartnerAop;
 import com.kl.web.starter.filter.CorsFilter;
 import com.kl.web.starter.filter.PartnerNumberFilter;
-import com.kl.web.starter.filter.ResourceLogFilter;
 import com.kl.web.starter.filter.TraceIdFilter;
 import com.kl.web.starter.handle.WebsiteExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -104,7 +103,7 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
     @Bean
     public FilterRegistrationBean registerResourceLogFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new ResourceLogFilter());
+//        registration.setFilter(new ResourceLogFilter());
         registration.addUrlPatterns("/*");
         registration.setName("resourceLogFilter");
         registration.setOrder(2);  //值越小，Filter越靠前。

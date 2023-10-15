@@ -4,10 +4,10 @@ package com.kl.mq.starter.producer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.kl.core.constants.CommonConstants;
-import com.kl.core.thread.KlThreadLocal;
-import com.kl.core.util.JsonUtils;
-import com.kl.core.util.TracIdUtil;
+import com.kl.common.constants.CommonConstants;
+import com.kl.common.thread.KlThreadLocal;
+import com.kl.common.util.JsonUtils;
+import com.kl.common.util.TracIdUtil;
 import com.kl.mq.starter.consts.MessageConsts;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
@@ -72,14 +72,14 @@ public class KlMqTemplate {
                 log.info(
                         "[KLMqTemplate] [mqType:{}] [send] [partnerCode:{}] [traceId:{}] [msgId:{}] [destination:{}]消息发送成功",
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                        message.getHeaders().get(CommonConstants.TENANT_ID),
+                        message.getHeaders().get(CommonConstants.PARTNER_CODE),
                         message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination);
             } else {
                 log.error(
                         "[KLMqTemplate] [mqType:{}] [send] [partnerCode:{}] [traceId:{}] [msgId:{}] [destination:{}] [payload:{}]消息发送失败",
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                        message.getHeaders().get(CommonConstants.TENANT_ID),
+                        message.getHeaders().get(CommonConstants.PARTNER_CODE),
                         message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination,
                         message.getPayload());
@@ -89,7 +89,7 @@ public class KlMqTemplate {
             log.error(String.format(
                     "[KLMqTemplate] [mqType:%s] [send] [partnerCode:%s] [traceId:%s] [msgId:%s] [destination:%s] [payload:%s]消息发送失败",
                     message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                    message.getHeaders().get(CommonConstants.TENANT_ID),
+                    message.getHeaders().get(CommonConstants.PARTNER_CODE),
                     message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                     message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination,
                     message.getPayload()), e);
@@ -115,14 +115,14 @@ public class KlMqTemplate {
                 log.info(
                         "[KLMqTemplate] [mqType:{}] [send] [partnerCode:{}] [traceId:{}] [msgId:{}] [destination:{}]消息发送成功",
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                        message.getHeaders().get(CommonConstants.TENANT_ID),
+                        message.getHeaders().get(CommonConstants.PARTNER_CODE),
                         message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination);
             } else {
                 log.error(
                         "[KLMqTemplate] [mqType:{}] [send] [partnerCode:{}] [traceId:{}] [msgId:{}] [destination:{}] [payload:{}]消息发送失败",
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                        message.getHeaders().get(CommonConstants.TENANT_ID),
+                        message.getHeaders().get(CommonConstants.PARTNER_CODE),
                         message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination,
                         message.getPayload());
@@ -132,7 +132,7 @@ public class KlMqTemplate {
             log.error(String.format(
                     "[KLMqTemplate] [mqType:%s] [send] [partnerCode:%s] [traceId:%s] [msgId:%s] [destination:%s] [payload:%s]消息发送失败",
                     message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                    message.getHeaders().get(CommonConstants.TENANT_ID),
+                    message.getHeaders().get(CommonConstants.PARTNER_CODE),
                     message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                     message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination,
                     message.getPayload()), e);
@@ -166,14 +166,14 @@ public class KlMqTemplate {
                 log.info(
                         "[KLMqTemplate] [mqType:{}] [send] [partnerCode:{}] [traceId:{}] [msgId:{}] [destination:{}]消息发送成功",
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                        message.getHeaders().get(CommonConstants.TENANT_ID),
+                        message.getHeaders().get(CommonConstants.PARTNER_CODE),
                         message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination);
             } else {
                 log.error(
                         "[KLMqTemplate] [mqType:{}] [send] [partnerCode:{}] [traceId:{}] [msgId:{}] [destination:{}] [payload:{}]消息发送失败",
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                        message.getHeaders().get(CommonConstants.TENANT_ID),
+                        message.getHeaders().get(CommonConstants.PARTNER_CODE),
                         message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                         message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination,
                         message.getPayload());
@@ -183,7 +183,7 @@ public class KlMqTemplate {
             log.error(String.format(
                     "[KLMqTemplate] [mqType:%s] [send] [partnerCode:%s] [traceId:%s] [msgId:%s] [destination:%s] [payload:%s]消息发送失败",
                     message.getHeaders().get(MessageConsts.KL_MESSAGE_MQTYPE_HEADER),
-                    message.getHeaders().get(CommonConstants.TENANT_ID),
+                    message.getHeaders().get(CommonConstants.PARTNER_CODE),
                     message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME),
                     message.getHeaders().get(MessageConsts.KL_MESSAGE_MSGID_HEADER), destination,
                     message.getPayload()), e);
@@ -194,7 +194,7 @@ public class KlMqTemplate {
     private Message<String> preSend(String destination, Object payload, Integer delayLevel, Long delayTime,
                                     String tags) {
         String traceId = MDC.get(TracIdUtil.LOGGER_ID_PARAM_NAME);
-        Integer partnerCode = KlThreadLocal.getTenantIdNotNull();
+        Integer partnerCode = KlThreadLocal.getPartnerCodeNotNull();
         if (StringUtils.isBlank(traceId)) {
             traceId = TracIdUtil.creaTracId();
         }
@@ -211,7 +211,7 @@ public class KlMqTemplate {
                 .setHeader(MessageConsts.KL_MESSAGE_DELAY_HEADER, delayLevel)
                 .setHeader(MessageConsts.KL_MESSAGE_MQTYPE_HEADER, getBinderName(destination));
         if (null != partnerCode) {
-            messageBuilder.setHeader(CommonConstants.TENANT_ID, partnerCode);
+            messageBuilder.setHeader(CommonConstants.PARTNER_CODE, partnerCode);
         }
         if (StringUtils.isNotBlank(tags)) {
             messageBuilder.setHeader(RocketMQHeaders.TAGS, tags);

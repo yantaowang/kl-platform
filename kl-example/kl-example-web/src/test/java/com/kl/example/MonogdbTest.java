@@ -1,6 +1,5 @@
 package com.kl.example;
 
-import com.kl.core.thread.KlThreadLocal;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +23,6 @@ public class MonogdbTest {
 
     @Test
     public void insertTest() {
-        KlThreadLocal.setTenantId(10000);
         Person p = new Person("Joe", 34);
 
         // 插入文档

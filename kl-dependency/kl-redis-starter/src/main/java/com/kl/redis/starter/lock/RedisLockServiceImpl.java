@@ -1,7 +1,7 @@
 package com.kl.redis.starter.lock;
 
 
-import com.kl.core.exception.KlException;
+import com.kl.common.exception.KlException;
 import com.kl.redis.starter.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

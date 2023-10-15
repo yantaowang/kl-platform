@@ -1,7 +1,7 @@
 package com.kl.web.starter.aop;
 
 
-import com.kl.core.thread.KlThreadLocal;
+import com.kl.common.thread.KlThreadLocal;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

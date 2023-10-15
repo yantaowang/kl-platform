@@ -1,11 +1,21 @@
 package com.kl.core.dubbo.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.kl.common.constants.CommonConstants;
+import com.kl.common.dto.KlResponse;
+import com.kl.common.thread.KlThreadLocal;
+import com.kl.common.util.TracIdUtil;
+import com.kl.monitor.starter.utils.CommonMonitorEnum;
+import com.kl.monitor.starter.utils.InterfaceTypeEnum;
+import com.kl.monitor.starter.utils.MonitorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.*;
 
 import java.util.Arrays;
+
+import static com.kl.common.constants.CommonConstants.THE_LOG_DATA_IS_TOO_LONG;
+
 
 /**
  * @ClassName RequestLogFilter
@@ -26,7 +36,7 @@ public class DubboRequestLogFilter implements Filter {
         if (argumentsStr.length() > CommonConstants.MAX_LOG_BODY_LENGTH) {
             argumentsStr = THE_LOG_DATA_IS_TOO_LONG;
         }
-        log.info("[DUBBO_LOG] [DUBBO_REQUEST] DubboFrom:[{}] partnerCode:[{}] Interface:[{}], MethodName:[{}], Arguments:[{}] ", dubboFrom, EwpThreadLocal.getPartnerCode(), invoker.getInterface(), invocation.getMethodName(), argumentsStr);
+        log.info("[DUBBO_LOG] [DUBBO_REQUEST] DubboFrom:[{}] partnerCode:[{}] Interface:[{}], MethodName:[{}], Arguments:[{}] ", dubboFrom, KlThreadLocal.getPartnerCode(), invoker.getInterface(), invocation.getMethodName(), argumentsStr);
         //上报dubbo响应时间
         Result result = MonitorUtil.timer(CommonMonitorEnum.BASE_DUBBO_REQUEST_TIMER, () -> invoker.invoke(invocation),"resource",DubboUtil.getMethodResourceName(invoker, invocation, false));
         try {
@@ -57,10 +67,10 @@ public class DubboRequestLogFilter implements Filter {
             try {
                 MonitorUtil.requestBucket(InterfaceTypeEnum.RPC, start);
                 String code;
-                if (result == null || result.getValue() == null || !(result.getValue() instanceof EwpResponse)) {
+                if (result == null || result.getValue() == null || !(result.getValue() instanceof KlResponse)) {
                     code = "unknow";
                 } else {
-                    code = ((EwpResponse) result.getValue()).getCode() + "";
+                    code = ((KlResponse) result.getValue()).getCode() + "";
                 }
                 //上报dubbo调用次数和返回code码
                 MonitorUtil.reportCount(CommonMonitorEnum.APP_REQUEST_COUNT, "resource", DubboUtil.getMethodResourceName(invoker, invocation, false), "type", InterfaceTypeEnum.RPC.getType(), "code", code);

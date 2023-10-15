@@ -7,6 +7,7 @@
         <groupId>com.kl</groupId>
         <artifactId>kl-platform</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>kl-dependency</artifactId>
     <packaging>pom</packaging>

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import com.kl.core.util.JsonUtils;
+import com.kl.common.util.JsonUtils;
 import com.kl.redis.starter.lock.LockService;
 import com.kl.redis.starter.lock.RedisLockServiceImpl;
 import com.kl.redis.starter.serializer.PartnerStringRedisSerializer;

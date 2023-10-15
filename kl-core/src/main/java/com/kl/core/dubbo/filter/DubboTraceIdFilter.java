@@ -1,5 +1,6 @@
 package com.kl.core.dubbo.filter;
 
+import com.kl.common.util.TracIdUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;

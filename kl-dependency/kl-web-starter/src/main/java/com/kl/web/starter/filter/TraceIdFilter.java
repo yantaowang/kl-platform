@@ -1,7 +1,7 @@
 package com.kl.web.starter.filter;
 
-import com.kl.core.constants.CommonConstants;
-import com.kl.core.util.TracIdUtil;
+import com.kl.common.constants.CommonConstants;
+import com.kl.common.util.TracIdUtil;
 import org.apache.dubbo.common.utils.StringUtils;
 import org.slf4j.MDC;
 

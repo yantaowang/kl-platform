@@ -1,8 +1,8 @@
 package com.kl.mq.starter.config;
 
-import com.kl.core.constants.CommonConstants;
-import com.kl.core.thread.KlThreadLocal;
-import com.kl.core.util.TracIdUtil;
+import com.kl.common.constants.CommonConstants;
+import com.kl.common.thread.KlThreadLocal;
+import com.kl.common.util.TracIdUtil;
 import com.kl.mq.starter.consts.MessageConsts;
 import com.kl.mq.starter.producer.KlMqTemplate;
 import org.apache.commons.lang3.StringUtils;
@@ -45,11 +45,11 @@ public class KlMqAutoConfiguration {
             @Override
             public Message<?> preSend(Message<?> message, MessageChannel channel) {
                 String traceId = String.valueOf(message.getHeaders().get(TracIdUtil.LOGGER_ID_PARAM_NAME));
-                String partnerCode = (null == message.getHeaders().get(CommonConstants.TENANT_ID)) ? null
-                        : String.valueOf(message.getHeaders().get(CommonConstants.TENANT_ID));
+                String partnerCode = (null == message.getHeaders().get(CommonConstants.PARTNER_CODE)) ? null
+                        : String.valueOf(message.getHeaders().get(CommonConstants.PARTNER_CODE));
                 if (StringUtils.isNotEmpty(partnerCode)) {
-                    KlThreadLocal.setTenantId(Integer.parseInt(partnerCode));
-                    MDC.put(CommonConstants.TENANT_ID, partnerCode);
+                    KlThreadLocal.setPartnerCode(Integer.parseInt(partnerCode));
+                    MDC.put(CommonConstants.PARTNER_CODE, partnerCode);
                 }
                 MDC.put(TracIdUtil.LOGGER_ID_PARAM_NAME, traceId);
                 log.info(
@@ -69,7 +69,7 @@ public class KlMqAutoConfiguration {
                                             @Nullable Exception ex) {
                 KlThreadLocal.remove();
                 MDC.remove(TracIdUtil.LOGGER_ID_PARAM_NAME);
-                MDC.remove(CommonConstants.TENANT_ID);
+                MDC.remove(CommonConstants.PARTNER_CODE);
             }
 
             @Override

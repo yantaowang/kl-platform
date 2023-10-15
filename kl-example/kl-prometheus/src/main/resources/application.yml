@@ -1,0 +1,10 @@
+#暴露actuator端点   http://localhost:8800/actuator/sentinel
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  application:
+    name: kl-prometheus

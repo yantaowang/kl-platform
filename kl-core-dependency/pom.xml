@@ -7,6 +7,7 @@
     <artifactId>kl-core-dependency</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>kl-core-dependency</name>
+    <description>sass平台核心maven依赖</description>
 
     <properties>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>

@@ -1,7 +1,7 @@
 package com.kl.core.config;
 
 
-import com.kl.core.thread.KlThreadPoolTaskExecutor;
+import com.kl.common.thread.KlThreadPoolTaskExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,7 +1,5 @@
 package com.kl.example;
 
-import com.kl.core.thread.KlThreadLocal;
-import com.kl.db.starter.IdGeneratorUtil;
 import com.kl.example.service.data.dtx.entity.OrderEntity;
 import com.kl.example.service.data.dtx.mapper.OrderMapper;
 import com.kl.redis.starter.service.RedisCommand;
@@ -26,7 +24,6 @@ public class MybatisTest {
 
     @Test
     public void selectTest() {
-        KlThreadLocal.setTenantId(10000);
         OrderEntity tOrderEntity = orderMapper.selectById(505460450654175235l);
     }
 
@@ -34,7 +31,7 @@ public class MybatisTest {
     public void insert() {
 //        KlThreadLocal.setTenantId(10000);
         OrderEntity orderEntity = new OrderEntity();
-        orderEntity.setId(IdGeneratorUtil.nextId());
+//        orderEntity.setId(IdGeneratorUtil.nextId());
         orderEntity.setUserId("12");
         orderEntity.setCommodityCode("d");
         orderEntity.setCount(1);
@@ -51,7 +48,6 @@ public class MybatisTest {
 
     @Test
     public void redisTest() {
-        KlThreadLocal.setTenantId(10000);
         redisCommand.set("wyt", "888ddd");
     }
 }

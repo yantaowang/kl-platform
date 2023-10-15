@@ -17,6 +17,7 @@
     <modules>
         <module>kl-example-web</module>
         <module>kl-example-service</module>
+        <module>kl-prometheus</module>
     </modules>
 
     <dependencies>

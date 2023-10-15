@@ -1,8 +1,7 @@
 package com.kl.web.starter.filter.wrapper;
 
 
-import com.kl.core.util.JsonUtils;
-import com.kl.web.starter.filter.ResourceLogFilter;
+import com.kl.common.util.JsonUtils;
 import org.apache.catalina.connector.ClientAbortException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -184,10 +183,7 @@ public class RequestWrapper extends HttpServletRequestWrapper {
      * 读取body字符
      */
     public String getBodyStr(String url, String contentType) {
-        //特殊的url需要特殊处理
-        if (ResourceLogFilter.NO_LOG_URL.contains(url)) {
-            return "日志内容过多，不输出日志";
-        }
+
         return bodyStr;
     }
 }

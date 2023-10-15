@@ -1,4 +1,5 @@
 package com.kl.core.dubbo.filter;
+import com.kl.common.thread.KlThreadLocal;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;
@@ -37,16 +38,16 @@ public class DubboPartnerCodeFilter implements Filter {
      * @return
      */
     public Result doProviderFilter(Invoker<?> invoker, Invocation invocation) {
-        EwpThreadLocal.remove();
-        String partnerId = RpcContext.getContext().getAttachment(com.ewp.core.common.constants.CommonConstants.PARTNER_CODE);
+        KlThreadLocal.remove();
+        String partnerId = RpcContext.getContext().getAttachment(com.kl.common.constants.CommonConstants.PARTNER_CODE);
         if (!StringUtils.isBlank(partnerId)) {
-            EwpThreadLocal.setPartnerCode(Integer.parseInt(partnerId));
+            KlThreadLocal.setPartnerCode(Integer.parseInt(partnerId));
         }
         try {
             return invoker.invoke(invocation);
         } finally {
             // 调用完成后移除线程变量属性
-            EwpThreadLocal.remove();
+            KlThreadLocal.remove();
         }
     }
 
@@ -58,9 +59,9 @@ public class DubboPartnerCodeFilter implements Filter {
      * @return
      */
     public Result doConsumerFilter(Invoker<?> invoker, Invocation invocation) {
-        Integer partnerId = EwpThreadLocal.getPartnerCode();
+        Integer partnerId = KlThreadLocal.getPartnerCode();
         if (partnerId != null) {
-            RpcContext.getContext().setAttachment(com.ewp.core.common.constants.CommonConstants.PARTNER_CODE, String.valueOf(partnerId));
+            RpcContext.getContext().setAttachment(com.kl.common.constants.CommonConstants.PARTNER_CODE, String.valueOf(partnerId));
         }
         return invoker.invoke(invocation);
     }

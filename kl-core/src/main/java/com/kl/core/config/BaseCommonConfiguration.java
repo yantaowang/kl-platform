@@ -2,8 +2,8 @@ package com.kl.core.config;
 
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.kl.core.constants.CommonConstants;
-import com.kl.core.thread.KlThreadLocal;
+import com.kl.common.constants.CommonConstants;
+import com.kl.common.thread.KlThreadLocal;
 import io.prometheus.client.CollectorRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class BaseCommonConfiguration {
         // 设置订阅者应用名称
         System.setProperty("project.name", moduleName);
         CommonConstants.APPLICATION_NAME = moduleName;
-        KlThreadLocal.initConfig(enablePartner, mode);
+        KlThreadLocal.initConfig(enablePartner.isEmpty(), mode);
     }
 
     @Bean
