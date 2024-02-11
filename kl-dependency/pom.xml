@@ -18,6 +18,7 @@
         <module>kl-dtx-starter</module>
         <module>kl-web-starter</module>
         <module>kl-monitor-starter</module>
+        <module>kl-service-starter</module>
     </modules>
 
     <properties>
