@@ -54,6 +54,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <freemarker.version>2.3.30</freemarker.version>
         <velocity-engine.version>2.2</velocity-engine.version>
+        <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
+        <springdoc.version>1.6.15</springdoc.version>
     </properties>
 
     <dependencyManagement>
@@ -340,6 +342,16 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>1.4.2.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId> <!-- 解决 ThreadLocal 父子线程的传值问题 -->
+                <version>${transmittable-thread-local.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
