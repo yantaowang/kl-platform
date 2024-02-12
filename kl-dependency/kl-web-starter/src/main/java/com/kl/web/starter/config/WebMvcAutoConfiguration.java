@@ -8,6 +8,7 @@ import com.kl.common.constants.RunMode;
 import com.kl.web.starter.aop.IgnorePartnerAop;
 import com.kl.web.starter.filter.CorsFilter;
 import com.kl.web.starter.filter.PartnerNumberFilter;
+import com.kl.web.starter.filter.ResourceLogFilter;
 import com.kl.web.starter.filter.TraceIdFilter;
 import com.kl.web.starter.handle.WebsiteExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +48,12 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
 
     @Value("${server.context-path:}")
     private String path = null;
+
+    /**
+     * 请求ID字段
+     */
+    @Value("${kl.requestId.header:Stgw-request-id}")
+    private String requestIdHeader;
 
     @Bean
     public IgnorePartnerAop buildIgnorePartnerAop() {
@@ -102,11 +109,12 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
      */
     @Bean
     public FilterRegistrationBean registerResourceLogFilter() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-//        registration.setFilter(new ResourceLogFilter());
+        FilterRegistrationBean<ResourceLogFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(new ResourceLogFilter(requestIdHeader, mode));
         registration.addUrlPatterns("/*");
         registration.setName("resourceLogFilter");
-        registration.setOrder(2);  //值越小，Filter越靠前。
+        // 值越小，Filter越靠前。
+        registration.setOrder(2);
         return registration;
     }
 
