@@ -20,7 +20,7 @@ public class KlTokenUtil {
 
     public static String SECRET = "6SqOQ5TCpYnoYYIg3V4DAyyzj8fAuoqXCE6vdx9bHTb6JS4VuNJ5x0EFltmC0IPk";
     //定义JWT的发布者，这里可以起项目的拥有者
-    private static final String TOKEN_ISSUSER = "ewp";
+    private static final String TOKEN_ISSUSER = "kl";
 
     private static Algorithm algorithm = Algorithm.HMAC256(SECRET);
     //定义JWT的有效时长

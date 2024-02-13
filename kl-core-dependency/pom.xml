@@ -44,7 +44,7 @@
         <rocketmq-spring-boot-starter.version>2.0.2</rocketmq-spring-boot-starter.version>
         <spring-kafka.version>2.5.6.RELEASE</spring-kafka.version>
         <kafka-clients.version>2.5.1</kafka-clients.version>
-        <swagger2.version>2.10.5</swagger2.version>
+        <swagger2.version>2.9.2</swagger2.version>
         <swagger-annotations.version>1.5.3</swagger-annotations.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
