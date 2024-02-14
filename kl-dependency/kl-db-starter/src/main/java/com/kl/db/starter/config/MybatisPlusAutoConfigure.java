@@ -1,7 +1,11 @@
 package com.kl.db.starter.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.kl.db.starter.interceptor.CustomTenantInterceptor;
 import com.kl.db.starter.properties.MybatisPlusAutoFillProperties;
 import com.kl.db.starter.properties.TenantProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +28,23 @@ public class MybatisPlusAutoConfigure {
 
     @Autowired
     private MybatisPlusAutoFillProperties autoFillProperties;
+
+    /**
+     * 分页插件，自动识别数据库类型
+     */
+    @Bean
+    public MybatisPlusInterceptor paginationInterceptor() {
+        MybatisPlusInterceptor mpInterceptor = new MybatisPlusInterceptor();
+        boolean enableTenant = tenantProperties.getEnable();
+        //是否开启多租户隔离
+        if (enableTenant) {
+            CustomTenantInterceptor tenantInterceptor = new CustomTenantInterceptor(
+                    tenantLineHandler, tenantProperties.getIgnoreSqls());
+            mpInterceptor.addInnerInterceptor(tenantInterceptor);
+        }
+        mpInterceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        return mpInterceptor;
+    }
 
     @Bean
     @ConditionalOnMissingBean
