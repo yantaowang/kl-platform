@@ -10,7 +10,7 @@ public class JwtTokenInfo {
     private String uid;
     // 用户名 可以为空
     private String username;
-    // 合作方标识
+    // 合作方标识n
     private int partnerCode;
     // token 创建时间（毫秒）
     private Date createTime;
