@@ -8,6 +8,12 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
+import com.kl.db.starter.handler.CreatorDataScopeSqlHandler;
+import com.kl.db.starter.handler.SqlHandler;
+import com.kl.db.starter.interceptor.CustomTenantInterceptor;
+import com.kl.db.starter.interceptor.DataScopeInnerInterceptor;
+import com.kl.db.starter.interceptor.EnableQuerySqlLogInnerInterceptor;
+import com.kl.db.starter.properties.DataScopeProperties;
 import com.kl.db.starter.properties.MybatisPlusAutoFillProperties;
 import com.kl.db.starter.properties.TenantProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,18 +40,34 @@ public class MybatisPlusAutoConfigure {
     @Autowired
     private MybatisPlusAutoFillProperties autoFillProperties;
 
+    @Autowired
+    private DataScopeProperties dataScopeProperties;
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SqlHandler sqlHandler() {
+        return new CreatorDataScopeSqlHandler();
+    }
+
     /**
      * MybatisPlus 拦截器-支持分页
      */
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+    public MybatisPlusInterceptor mybatisPlusInterceptor(SqlHandler sqlHandler) {
+        MybatisPlusInterceptor mpInterceptor = new MybatisPlusInterceptor();
         boolean enableTenant = tenantProperties.getEnable();
+        //是否开启多租户隔离
         if (enableTenant) {
-            interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(tenantLineHandler));
+            CustomTenantInterceptor tenantInterceptor = new CustomTenantInterceptor(
+                    tenantLineHandler, tenantProperties.getIgnoreSqls());
+            mpInterceptor.addInnerInterceptor(tenantInterceptor);
         }
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        return interceptor;
+        if (dataScopeProperties.getEnabled()) {
+            DataScopeInnerInterceptor dataScopeInnerInterceptor = new DataScopeInnerInterceptor(dataScopeProperties, sqlHandler);
+            mpInterceptor.addInnerInterceptor(Boolean.TRUE.equals(dataScopeProperties.getEnabledSqlDebug())
+                    ? new EnableQuerySqlLogInnerInterceptor(dataScopeInnerInterceptor) : dataScopeInnerInterceptor);
+        }
+        return mpInterceptor;
     }
 
     @Bean
