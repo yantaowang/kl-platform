@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.kl.redis.starter.config.RedisAutoConfiguration
+com.kl.db.starter.config.TenantAutoConfigure,\
+com.kl.db.starter.config.MybatisPlusAutoConfigure
