@@ -55,7 +55,7 @@ public class DataScopeProperties {
      */
     private String creatorIdColumnName = "creator_id";
 
-    private String departmentIdColumnName = "department_id";
+    private String departmentIdColumnName = "dept_id";
 
     public void setIgnoreSqls(Set<String> ignoreSqls) {
         Set<String> ingoreSet = new HashSet<>();

@@ -1,13 +1,8 @@
 package com.kl.db.starter.config;
 
-import cn.hutool.core.collection.CollUtil;
-import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.baomidou.mybatisplus.core.parser.ISqlParserFilter;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
-import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import com.kl.db.starter.handler.CreatorDataScopeSqlHandler;
 import com.kl.db.starter.handler.SqlHandler;
 import com.kl.db.starter.interceptor.CustomTenantInterceptor;
@@ -30,9 +25,6 @@ import org.springframework.context.annotation.Bean;
 public class MybatisPlusAutoConfigure {
     @Autowired
     private TenantLineHandler tenantLineHandler;
-
-    @Autowired
-    private ISqlParserFilter sqlParserFilter;
 
     @Autowired
     private TenantProperties tenantProperties;
